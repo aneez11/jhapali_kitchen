@@ -1,0 +1,170 @@
+@import "../../styles/variables";
+
+.container {
+  flex: 1;
+}
+
+.header {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+}
+
+.headerContent {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.brandRow {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.miniAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  overflow: hidden;
+  border-width: 1px;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+}
+
+.scrollContent {
+  padding-top: $md;
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+}
+
+.titleRow {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: $section-gap;
+}
+
+.monthNav {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-radius: $radius-md;
+  margin-bottom: 16px;
+}
+
+.navBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.legend {
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.legendItem {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.detailsSection {
+  margin-top: $section-gap;
+}
+
+.detailsHeader {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.detailCard {
+  border-radius: $radius-xl;
+  overflow: hidden;
+}
+
+.detailImageContainer {
+  height: 160px;
+  position: relative;
+}
+
+.detailImage {
+  width: 100%;
+  height: 100%;
+}
+
+.detailOverlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.overlayTag {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: $radius-full;
+}
+
+.detailContent {
+  padding: 20px;
+}
+
+.detailTags {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.detailTag {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 8px;
+}
+
+.detailFooter {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top-width: 1px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailActions {
+  flex-direction: row;
+  gap: 12px;
+}
+
+.actionIconButton {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  border-width: 1px;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,102 @@
+@import "../../styles/variables";
+
+.container {
+  flex: 1;
+}
+
+.header {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+  border-bottom-width: 1px;
+  z-index: 50;
+  background-color: rgba(248, 249, 255, 0.9);
+}
+
+.headerContent {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.headerLeft {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollContent {
+  padding-top: 24px;
+  padding-bottom: 100px;
+}
+
+.section {
+  margin-bottom: $section-gap;
+}
+
+.sectionPadding {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+}
+
+.heroSection {
+  align-items: center;
+  margin-bottom: $lg;
+}
+
+.heroIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.currentPlanBadge {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-horizontal: 14px;
+  padding-vertical: 6px;
+  border-radius: $radius-full;
+  margin-top: 12px;
+}
+
+.plansContainer {
+  gap: 16px;
+}
+
+.enterpriseCard {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: $md;
+  border-radius: $radius-lg;
+  border-width: 1px;
+  border-style: dashed;
+}
+
+.enterpriseIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.enterpriseContent {
+  flex: 1;
+}
+
+.contactLink {
+  margin-top: 8px;
+}

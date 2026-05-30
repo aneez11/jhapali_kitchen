@@ -1,0 +1,176 @@
+@import "../../styles/variables";
+
+.container {
+  flex: 1;
+}
+
+.header {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+  border-bottom-width: 1px;
+}
+
+.headerContent {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.userProfile {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollContent {
+  padding-top: $xl;
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+  align-items: center;
+}
+
+.passContainer {
+  width: 100%;
+  max-width: 400px;
+}
+
+.ticket {
+  background-color: #fff;
+  border-radius: $radius-xl;
+  overflow: visible; // For notches
+  position: relative;
+}
+
+.ticketHeader {
+  padding: 24px;
+  align-items: center;
+  border-bottom-width: 1px;
+}
+
+.qrSection {
+  padding: 32px;
+  align-items: center;
+}
+
+.qrWrapper {
+  padding: 16px;
+  border-radius: $radius-lg;
+  border-width: 1px;
+  background-color: #fff;
+  position: relative;
+}
+
+.qrCorner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+}
+
+.qrPlaceholder {
+  width: 192px;
+  height: 192px;
+  border-radius: $radius-md;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.qrImage {
+  width: 160px;
+  height: 160px;
+  opacity: 0.9;
+}
+
+.timerSection {
+  margin-top: 32px;
+  align-items: center;
+}
+
+.timerRow {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.ticketFooter {
+  padding: 24px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mealInfo {
+  flex: 1;
+  margin-right: 12px;
+}
+
+.tagRow {
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tag {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: $radius-full;
+}
+
+.mealImageWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border-width: 2px;
+  border-color: #fff;
+  shadow-color: #000;
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.1;
+  shadow-radius: 4px;
+}
+
+.mealImage {
+  width: 100%;
+  height: 100%;
+}
+
+.notch {
+  position: absolute;
+  top: 70%;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin-top: -10px;
+  z-index: 1;
+}
+
+.actionSection {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 32px;
+}

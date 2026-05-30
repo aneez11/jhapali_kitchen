@@ -1,0 +1,145 @@
+@import "../../styles/variables";
+
+.container {
+  flex: 1;
+}
+
+.header {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+  border-bottom-width: 1px;
+  z-index: 50;
+  background-color: rgba(248, 249, 255, 0.9);
+}
+
+.headerContent {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.headerLeft {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollContent {
+  padding-top: 24px;
+  padding-bottom: 100px;
+}
+
+.section {
+  margin-bottom: $section-gap;
+}
+
+.sectionPadding {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+}
+
+.searchSection {
+  margin-bottom: $lg;
+}
+
+.searchLabel {
+  margin-bottom: 12px;
+}
+
+.searchBar {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding-horizontal: 16px;
+  height: 52px;
+  border-radius: $radius-md;
+  border-width: 1px;
+}
+
+.searchInput {
+  flex: 1;
+  font-family: Inter;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.quickActionsGrid {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quickActionCard {
+  padding: $md;
+  border-radius: $radius-lg;
+  border-width: 1px;
+  gap: 12px;
+}
+
+.quickActionIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  align-items: center;
+  justify-content: center;
+}
+
+.quickActionHalf {
+  width: calc(50% - 6px);
+}
+
+.quickActionFull {
+  width: 100%;
+}
+
+.faqSection {
+  gap: 8px;
+}
+
+.faqItem {
+  border-width: 1px;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.faqHeader {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: $md;
+}
+
+.faqContent {
+  padding-horizontal: $md;
+  padding-bottom: $md;
+}
+
+.contactCard {
+  padding: $md;
+  border-radius: $radius-lg;
+  border-width: 1px;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.contactIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactInfo {
+  flex: 1;
+}

@@ -1,0 +1,127 @@
+@import "../../styles/variables";
+
+.container {
+  flex: 1;
+}
+
+.header {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+  border-bottom-width: 1px;
+  z-index: 50;
+  background-color: rgba(248, 249, 255, 0.9);
+}
+
+.headerContent {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.headerLeft {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollContent {
+  padding-top: 24px;
+  padding-bottom: 100px;
+}
+
+.section {
+  margin-bottom: $section-gap;
+}
+
+.sectionPadding {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+}
+
+.feedbackHeader {
+  align-items: center;
+  margin-bottom: $lg;
+}
+
+.feedbackIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.mealPreview {
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: $md;
+  border-radius: $radius-lg;
+  border-width: 1px;
+  margin-bottom: $lg;
+}
+
+.mealPreviewImage {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+}
+
+.mealPreviewInfo {
+  flex: 1;
+}
+
+.ratingsContainer {
+  gap: 24px;
+}
+
+.textArea {
+  min-height: 100px;
+  border-width: 1px;
+  border-radius: $radius-md;
+  padding: 12px;
+  font-family: Inter;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.submitSection {
+  padding-top: $md;
+}
+
+.successOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.successContent {
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+  border-radius: $radius-xl;
+  max-width: 300px;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  align-items: center;
+  justify-content: center;
+}

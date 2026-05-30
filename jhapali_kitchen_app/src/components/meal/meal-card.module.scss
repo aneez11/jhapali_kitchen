@@ -1,0 +1,141 @@
+.card {
+  border-width: 1px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  shadow-color: #000;
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.05;
+  shadow-radius: 4px;
+  elevation: 2;
+}
+
+.imageContainer {
+  height: 176px;
+  width: 100%;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.typeBadge {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 9999px;
+}
+
+.typeBadgeText {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.overrideBadge {
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 9999px;
+}
+
+.overrideBadgeText {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.content {
+  padding: 16px;
+}
+
+.contentRow {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.contentLeft {
+  flex: 1;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+
+.tagsContainer {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.tag {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 9999px;
+}
+
+.tagText {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.overrideNote {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.editButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionButtons {
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.actionButton {
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  border-radius: 12px;
+  border-width: 2px;
+}
+
+.actionButtonText {
+  font-size: 12px;
+  font-weight: 700;
+}

@@ -1,0 +1,120 @@
+@import "../../styles/variables";
+
+.container {
+  flex: 1;
+}
+
+.header {
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+}
+
+.headerContent {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.brandRow {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.miniAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  border-width: 2px;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+}
+
+.scrollContent {
+  padding-top: $md;
+  padding-left: $container-margin;
+  padding-right: $container-margin;
+}
+
+.dueCard {
+  padding: 24px;
+  border-radius: $radius-xl;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: $section-gap;
+}
+
+.dueCardContent {
+  z-index: 1;
+}
+
+.amountRow {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dueBadge {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: $radius-full;
+  margin-top: 16px;
+  align-self: flex-start;
+}
+
+.decorCircle {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+.section {
+  margin-bottom: $section-gap;
+}
+
+.summaryCard {
+  padding: 20px;
+  border-radius: $radius-xl;
+}
+
+.summaryRow {
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.totalRow {
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top-width: 1px;
+}
+
+.sectionHeader {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.footerAction {
+  position: absolute;
+  bottom: 100px;
+  left: 16px;
+  right: 16px;
+}
