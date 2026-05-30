@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Help &amp; Support</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#f8f9ff",
+                    "primary-fixed": "#6ffbbe",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#71a1ff",
+                    "surface": "#f8f9ff",
+                    "primary": "#006c49",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-container": "#684000",
+                    "outline-variant": "#bbcabf",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#002113",
+                    "on-tertiary-fixed": "#001a42",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "primary-fixed-dim": "#4edea3",
+                    "inverse-surface": "#213145",
+                    "secondary": "#855300",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-tint": "#006c49",
+                    "on-primary-container": "#00422b",
+                    "inverse-primary": "#4edea3",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary": "#005ac2",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "outline": "#6c7a71",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-container": "#fea619",
+                    "on-primary-fixed-variant": "#005236",
+                    "secondary-fixed": "#ffddb8",
+                    "on-surface": "#0b1c30",
+                    "on-background": "#0b1c30",
+                    "surface-container": "#e5eeff",
+                    "primary-container": "#10b981",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-fixed": "#2a1700",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#00367a",
+                    "on-surface-variant": "#3c4a42"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1rem",
+                    "container-margin": "1rem",
+                    "stack-gap": "1rem",
+                    "section-gap": "2rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-margin h-16 w-full transition-colors duration-200">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary cursor-pointer" onclick="window.history.back()">arrow_back</span>
+<h1 class="font-headline-md text-headline-md text-primary">Help &amp; Support</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high/50 flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Profile Picture" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a young adult with a friendly expression, set against a soft-focus office background with warm, natural morning light. The style is clean and corporate-minimalist, emphasizing a sense of reliability and personal connection in a modern tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZQlrjkonUVB_-Dzk7MYIGgWPyQyBMZmo1xUoE-G0BYUMs4Ef5O35olwVbmowB3XEYPRt23KhhIrxfZUv_b-RfxGPzExFf_kXYgIKWZR3xa6_kCNpLH3mtmujnvp3KBtP2-LAHE36rgBH7mQEbtDl9bZhJkzbCLZW4rLSi-6XR-kxnHKw6ajslnXqwQ6PJMODjuXSoxwOvD2VRky4QhVrL-nFammWD2DDPSqZdZ7IA2DSHsUpFV7cuIAMBSihq4e_Ilb7x9VGw1So"/>
+</div>
+</header>
+<main class="pt-24 px-container-margin max-w-2xl mx-auto space-y-section-gap">
+<!-- Search Section -->
+<section class="space-y-stack-gap">
+<div class="text-center space-y-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">How can we help?</h2>
+<p class="text-on-surface-variant font-body-sm">Search our knowledge base or browse categories below</p>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 font-body-lg shadow-sm" placeholder="Search for articles, guides..." type="text"/>
+</div>
+</section>
+<!-- Quick Actions / Categories Bento Grid -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Category: Subscription -->
+<button class="flex flex-col items-start p-5 bg-surface-container-lowest border border-outline-variant rounded-xl text-left hover:border-primary transition-all duration-200 group shadow-sm">
+<div class="w-12 h-12 rounded-lg bg-primary-container/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<span class="font-headline-md text-on-surface text-base">Subscription</span>
+<span class="font-body-sm text-on-surface-variant mt-1">Plans, billing, and refunds</span>
+</button>
+<!-- Category: Technical Issues -->
+<button class="flex flex-col items-start p-5 bg-surface-container-lowest border border-outline-variant rounded-xl text-left hover:border-primary transition-all duration-200 group shadow-sm">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">settings_suggest</span>
+</div>
+<span class="font-headline-md text-on-surface text-base">Technical Issues</span>
+<span class="font-body-sm text-on-surface-variant mt-1">App bugs and performance</span>
+</button>
+<!-- Category: Canteen Rules -->
+<button class="flex flex-col items-start p-5 bg-surface-container-lowest border border-outline-variant rounded-xl text-left hover:border-primary transition-all duration-200 group shadow-sm col-span-2">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<span class="font-headline-md text-on-surface text-base">Canteen Rules</span>
+<p class="font-body-sm text-on-surface-variant mt-1">Hygiene standards and pickup protocols</p>
+</div>
+</div>
+</button>
+</section>
+<!-- FAQ Section -->
+<section class="space-y-stack-gap">
+<h3 class="font-headline-md text-on-surface px-1">Frequent Questions</h3>
+<div class="space-y-3">
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<summary class="flex justify-between items-center p-4 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+<span class="font-body-lg font-semibold text-on-surface">How do I change my meal preference?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-on-surface-variant font-body-sm leading-relaxed">
+                        You can update your dietary preferences in the Profile settings. Changes made before 4 PM will apply to the next day's meal schedule.
+                    </div>
+</details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<summary class="flex justify-between items-center p-4 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+<span class="font-body-lg font-semibold text-on-surface">What is the QR ID for?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-on-surface-variant font-body-sm leading-relaxed">
+                        Your unique QR ID is used for touchless meal collection at the canteen kiosks. Simply scan your code at the designated terminal to verify your subscription and receive your meal.
+                    </div>
+</details>
+<details class="group bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<summary class="flex justify-between items-center p-4 cursor-pointer list-none hover:bg-surface-container-low transition-colors">
+<span class="font-body-lg font-semibold text-on-surface">Can I pause my subscription?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-4 pt-0 text-on-surface-variant font-body-sm leading-relaxed">
+                        Yes, you can pause your subscription for up to 14 days per semester via the 'Subscription' category in this app.
+                    </div>
+</details>
+</div>
+</section>
+<!-- Contact Support Button -->
+<section class="pb-10">
+<div class="p-6 bg-primary/5 rounded-2xl border border-primary/10 flex flex-col items-center text-center space-y-4">
+<div class="p-3 bg-primary rounded-full text-on-primary">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div>
+<h4 class="font-headline-md text-on-surface">Still need help?</h4>
+<p class="font-body-sm text-on-surface-variant px-4">Our support team is available Mon-Fri, 9am - 6pm</p>
+</div>
+<button class="w-full max-w-xs h-12 bg-primary text-on-primary font-body-lg font-semibold rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 shadow-md">
+                    Contact Support
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md border-t border-outline-variant dark:border-outline shadow-sm flex justify-around items-center h-20 pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-caps text-label-caps">Calendar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_2</span>
+<span class="font-label-caps text-label-caps">QR ID</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+<div class="h-1 w-1 bg-primary rounded-full mt-0.5"></div>
+</a>
+</nav>
+<script>
+        // Simple search filtering simulation
+        const searchInput = document.querySelector('input[type="text"]');
+        const faqDetails = document.querySelectorAll('details');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            faqDetails.forEach(detail => {
+                const text = detail.textContent.toLowerCase();
+                if (text.includes(term)) {
+                    detail.style.display = 'block';
+                } else {
+                    detail.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body></html>

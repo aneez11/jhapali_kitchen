@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meal Feedback</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#f8f9ff",
+            "primary-fixed": "#6ffbbe",
+            "tertiary-fixed": "#d8e2ff",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "secondary-fixed-dim": "#ffb95f",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#71a1ff",
+            "surface": "#f8f9ff",
+            "primary": "#006c49",
+            "surface-container-high": "#dce9ff",
+            "on-secondary-container": "#684000",
+            "outline-variant": "#bbcabf",
+            "tertiary-fixed-dim": "#adc6ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#002113",
+            "on-tertiary-fixed": "#001a42",
+            "on-tertiary-fixed-variant": "#004395",
+            "primary-fixed-dim": "#4edea3",
+            "inverse-surface": "#213145",
+            "secondary": "#855300",
+            "on-secondary": "#ffffff",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-tint": "#006c49",
+            "on-primary-container": "#00422b",
+            "inverse-primary": "#4edea3",
+            "surface-variant": "#d3e4fe",
+            "surface-container-highest": "#d3e4fe",
+            "tertiary": "#005ac2",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "outline": "#6c7a71",
+            "surface-dim": "#cbdbf5",
+            "secondary-container": "#fea619",
+            "on-primary-fixed-variant": "#005236",
+            "secondary-fixed": "#ffddb8",
+            "on-surface": "#0b1c30",
+            "on-background": "#0b1c30",
+            "surface-container": "#e5eeff",
+            "primary-container": "#10b981",
+            "on-secondary-fixed-variant": "#653e00",
+            "surface-container-low": "#eff4ff",
+            "on-secondary-fixed": "#2a1700",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#00367a",
+            "on-surface-variant": "#3c4a42"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "container-margin": "1rem",
+            "stack-gap": "1rem",
+            "section-gap": "2rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-caps": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      user-select: none;
+    }
+    .star-rating .material-symbols-outlined.active {
+      font-variation-settings: 'FILL' 1;
+      color: #fea619;
+    }
+    .feedback-card {
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-24">
+<!-- Top Navigation Shell (Suppressed for focused feedback flow, but using header logic) -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant h-16 flex justify-between items-center px-container-margin">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high/50 transition-colors" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Meal Feedback</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a friendly young man with a warm smile. He has short styled hair and is looking directly at the camera. The lighting is soft and natural, emphasizing a bright and trustworthy personality suitable for a modern corporate application. The background is a clean, out-of-focus office environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIuew67snH1w_MySb65MkT_qf-wSeezl-otk2HpdP7fJqunUCZeHo6ijqs6VnEsUE7r8srN2ei1Nf5UinIqM1CWyp72_i7UFi-oGIGz9YqBlBgCvQIB-QSXqJAgJ8Q1EmOIgs8dd4FI4CjU1UCLHc3XOpSkLWYcR9iXy-uQXCRK88EcxGXTJRQdeUevReo65E0zxme46GQGwJiAWWFZ-ssIK4yHon0ySfZWBQAOCq9rtaTU_KXdYLFdDFzb0Oz6Jnx79gZfmj77JI"/>
+</div>
+</header>
+<main class="pt-24 px-container-margin max-w-lg mx-auto">
+<!-- Feedback Header -->
+<section class="text-center mb-8">
+<div class="w-24 h-24 bg-primary-container/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-primary text-5xl">restaurant</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-2">How was your lunch?</h2>
+<p class="text-on-surface-variant font-body-lg">Help us keep the canteen awesome by sharing your thoughts on today's meal!</p>
+</section>
+<!-- Meal Preview Card -->
+<div class="feedback-card bg-surface-container-lowest rounded-xl p-4 border border-outline-variant mb-6 flex items-center gap-4">
+<img class="w-20 h-20 rounded-lg object-cover" data-alt="A vibrant and fresh Mediterranean salad bowl with grilled halloumi, avocado slices, quinoa, and cherry tomatoes. The food is beautifully plated in a ceramic bowl on a clean white table. The lighting is high-key and appetizing, showcasing the textures of the fresh greens and colorful vegetables in a premium minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7uo6RQtYGfVGnq7623OjCmo-MfjS_B92S8zS4r7s1rGM8a5Q6RAgcwdvjoLO-cT-LVMnk7ym1gwLSVGgRmugz8MxHQa6-pQ7MLmkXMWsNJnIHhf5FoMo2tSZCosAQIXjxbgKUJvCKpRdbIHvut721IL7iHoE1mcJE3dfuhXDg80wxPcJw_LZ0EydP_w5JkJWcTD8FstZAn7MvV0Od6_zS-PAIL7ZHw_PWwd-HyJQZU9uTktitAE3_RWRQLCfGHfSwdnpoGXTe8fM"/>
+<div>
+<span class="font-label-caps text-label-caps text-primary bg-primary-container/20 px-2 py-0.5 rounded-full mb-1 inline-block">TODAY'S CHOICE</span>
+<h3 class="font-headline-md text-headline-md leading-tight">Zesty Quinoa &amp; Halloumi Bowl</h3>
+<p class="text-body-sm text-on-surface-variant">Picked up at 12:45 PM</p>
+</div>
+</div>
+<!-- Rating Form -->
+<div class="space-y-6">
+<!-- Quality Rating -->
+<div class="bg-surface-container-low p-4 rounded-xl">
+<div class="flex justify-between items-center mb-3">
+<label class="font-headline-md text-on-surface">Overall Quality</label>
+<span class="text-body-sm text-on-surface-variant italic">Freshness &amp; feel</span>
+</div>
+<div class="star-rating flex gap-2" data-rating-group="quality">
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="1" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="2" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="3" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="4" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="5" onclick="handleStarClick(this)">star</span>
+</div>
+</div>
+<!-- Taste Rating -->
+<div class="bg-surface-container-low p-4 rounded-xl">
+<div class="flex justify-between items-center mb-3">
+<label class="font-headline-md text-on-surface">Taste &amp; Flavor</label>
+<span class="text-body-sm text-on-surface-variant italic">Was it delicious?</span>
+</div>
+<div class="star-rating flex gap-2" data-rating-group="taste">
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="1" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="2" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="3" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="4" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="5" onclick="handleStarClick(this)">star</span>
+</div>
+</div>
+<!-- Portion Rating -->
+<div class="bg-surface-container-low p-4 rounded-xl">
+<div class="flex justify-between items-center mb-3">
+<label class="font-headline-md text-on-surface">Portion Size</label>
+<span class="text-body-sm text-on-surface-variant italic">Are you full?</span>
+</div>
+<div class="star-rating flex gap-2" data-rating-group="portion">
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="1" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="2" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="3" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="4" onclick="handleStarClick(this)">star</span>
+<span class="material-symbols-outlined cursor-pointer text-4xl hover:scale-110 transition-transform text-outline-variant" data-value="5" onclick="handleStarClick(this)">star</span>
+</div>
+</div>
+<!-- Comments -->
+<div>
+<label class="block font-headline-md text-on-surface mb-3">Extra thoughts?</label>
+<textarea class="w-full h-32 bg-surface-container-lowest border border-outline-variant rounded-xl p-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none font-body-lg" placeholder="Tell us what you loved or what we could spice up! (Optional)"></textarea>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-14 bg-primary text-on-primary font-headline-md rounded-xl shadow-lg hover:bg-primary/90 active:scale-95 transition-all flex items-center justify-center gap-2 group" id="submitFeedback" onclick="submitAnimation()">
+<span>Submit Feedback</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</div>
+</main>
+<!-- Success Splash Overlay (Hidden by default) -->
+<div class="fixed inset-0 z-[60] bg-primary flex flex-col items-center justify-center text-on-primary px-8 text-center translate-y-full transition-transform duration-500 ease-out" id="successSplash">
+<div class="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mb-6 animate-bounce">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'FILL' 1;">thumb_up</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-4">Thanks for the love!</h2>
+<p class="font-body-lg text-white/80 max-w-xs mb-8">Your feedback helps our chefs create better meals every single day.</p>
+<button class="bg-white text-primary px-8 py-3 rounded-full font-headline-md shadow-xl active:scale-95 transition-transform" onclick="location.reload()">Back to Home</button>
+</div>
+<script>
+    function handleStarClick(star) {
+      const group = star.closest('[data-rating-group]');
+      const stars = group.querySelectorAll('.material-symbols-outlined');
+      const val = parseInt(star.dataset.value);
+      
+      stars.forEach((s, idx) => {
+        if (idx < val) {
+          s.classList.add('active');
+          s.style.fontVariationSettings = "'FILL' 1";
+        } else {
+          s.classList.remove('active');
+          s.style.fontVariationSettings = "'FILL' 0";
+        }
+      });
+
+      // Subtle haptic feedback imitation
+      star.classList.add('scale-125');
+      setTimeout(() => star.classList.remove('scale-125'), 150);
+    }
+
+    function submitAnimation() {
+      const btn = document.getElementById('submitFeedback');
+      const splash = document.getElementById('successSplash');
+      
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Sending...';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        splash.classList.remove('translate-y-full');
+        splash.classList.add('translate-y-0');
+      }, 1200);
+    }
+  </script>
+</body></html>

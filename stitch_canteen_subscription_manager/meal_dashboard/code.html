@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Meal Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "surface-tint": "#006c49",
+                    "surface-container": "#e5eeff",
+                    "on-background": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#d8e2ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "tertiary": "#005ac2",
+                    "surface-variant": "#d3e4fe",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#cbdbf5",
+                    "inverse-surface": "#213145",
+                    "on-surface-variant": "#3c4a42",
+                    "outline-variant": "#bbcabf",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#006c49",
+                    "primary-container": "#10b981",
+                    "tertiary-container": "#71a1ff",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-fixed": "#001a42",
+                    "surface-container-low": "#eff4ff",
+                    "secondary": "#855300",
+                    "secondary-container": "#fea619",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "on-tertiary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-primary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#4edea3",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-container": "#00422b",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#684000",
+                    "on-surface": "#0b1c30",
+                    "inverse-primary": "#4edea3",
+                    "outline": "#6c7a71",
+                    "secondary-fixed": "#ffddb8",
+                    "on-secondary-fixed": "#2a1700",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "on-tertiary-container": "#00367a",
+                    "primary-fixed": "#6ffbbe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1rem",
+                    "container-margin": "1rem",
+                    "section-gap": "2rem",
+                    "stack-gap": "1rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .calendar-active { box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-lg text-on-surface min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md border-b border-outline-variant dark:border-outline flex justify-between items-center px-container-margin h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden ring-2 ring-primary/20">
+<img alt="User Profile Picture" class="w-full h-full object-cover" data-alt="A professional close-up headshot of a friendly young man with a slight smile, set against a clean and minimalist corporate studio background. The lighting is soft and even, highlighting healthy skin tones and sharp features. The overall aesthetic is bright, modern, and high-quality, aligning with a premium health and wellness application. The color palette is dominated by neutral whites and soft greys with subtle depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp95JLCE2dbhqEXEQSAzwyBFJ0h0_Gb7Tf9IVLG0vW6DNhzmQX9BZJ10Jdp4Txi7YWz2jAEI2BYtYLk73tS1LMpNpR1uwGVKpurRhC9P807896x1gkfsj7o5z46Fi1XLayPYN_apR_WCw_2suld1WRnN8ugo6n5JErmPju7Nvc_-S1V2XsLe7dcJA77OE4O482NWYrmWwV3_nTX8-xOJD0x4B4RkRrQpPgtIkCl2iLkj5MmGnYj7WM2T0omSqPWV5tqIL1-2cB1Wg"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim leading-none">Hi, Alex!</h1>
+<span class="inline-flex items-center mt-0.5 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider bg-primary/10 text-primary uppercase">
+                    Monthly Plan Active
+                </span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high/50 transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</header>
+<main class="pt-20 px-container-margin space-y-section-gap">
+<!-- Horizontal Calendar Strip -->
+<section class="space-y-stack-gap">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md">Your Schedule</h2>
+<span class="text-body-sm text-on-surface-variant">October 2023</span>
+</div>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 px-1">
+<!-- Mon -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-20 rounded-2xl border border-outline-variant bg-surface-container-lowest">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">MON</span>
+<span class="font-headline-md text-headline-md">23</span>
+<div class="w-1.5 h-1.5 rounded-full bg-secondary mt-1"></div>
+</div>
+<!-- Tue -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-20 rounded-2xl border border-outline-variant bg-surface-container-lowest">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">TUE</span>
+<span class="font-headline-md text-headline-md">24</span>
+</div>
+<!-- Wed (Today) -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-20 rounded-2xl bg-primary text-on-primary calendar-active">
+<span class="font-label-caps text-label-caps text-primary-fixed mb-1">WED</span>
+<span class="font-headline-md text-headline-md">25</span>
+</div>
+<!-- Thu -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-20 rounded-2xl border border-outline-variant bg-surface-container-lowest">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">THU</span>
+<span class="font-headline-md text-headline-md">26</span>
+<div class="w-1.5 h-1.5 rounded-full bg-error mt-1"></div>
+</div>
+<!-- Fri -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-20 rounded-2xl border border-outline-variant bg-surface-container-lowest">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">FRI</span>
+<span class="font-headline-md text-headline-md">27</span>
+</div>
+<!-- Sat -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-20 rounded-2xl border border-outline-variant bg-surface-container-lowest opacity-60">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">SAT</span>
+<span class="font-headline-md text-headline-md">28</span>
+</div>
+<!-- Sun -->
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-20 rounded-2xl border border-outline-variant bg-surface-container-lowest opacity-60">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1">SUN</span>
+<span class="font-headline-md text-headline-md">29</span>
+</div>
+</div>
+</section>
+<!-- Meal Slots -->
+<section class="space-y-stack-gap">
+<h2 class="font-headline-md text-headline-md">Today's Meals</h2>
+<!-- Lunch Card -->
+<div class="group relative bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+<div class="h-44 w-full relative">
+<img alt="Grilled Salmon &amp; Quinoa Bowl" class="w-full h-full object-cover" data-alt="A gourmet, high-angle shot of a vibrant grilled salmon and quinoa bowl. The salmon is perfectly seared with golden-brown edges, resting atop a bed of fluffy quinoa mixed with fresh herbs. The bowl is garnished with bright green avocado slices, cherry tomatoes, and a wedge of lemon. The lighting is crisp and natural, emphasizing the textures and fresh colors of the ingredients. The background is a clean, minimalist wooden surface in a light tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwC9Fs6OJ4cYlY66xWO4D8TzcwkUSv61uPob7pCfAyIEL0kgwUj9R6MwF3N5ASF_qU25PbeEHTQGhZDXXI-4LawP0vd-uQq1Q3fx1CjNgOcGxHH0LgeiiEQJPZfO80eipoDqc1BJP0aSFtWvdQJleWUVtjaFO6gXVijfYmdz1zAGOunxp3GjwBZ2pxXyj1O9pP3njnNmBmieKfiRFrBJ-y_LXaOh_973GT_U9_7SvidNka8YWyOgi6nWQBCnNF-scekgvzQNb1MX8"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full font-label-caps text-label-caps text-primary shadow-sm uppercase">Lunch • 12:30 PM</span>
+</div>
+</div>
+<div class="p-4 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Grilled Salmon &amp; Quinoa Bowl</h3>
+<div class="flex gap-2 mt-1">
+<span class="px-2 py-0.5 bg-surface-container-high rounded-full font-label-caps text-label-caps text-on-surface-variant">650 kcal</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded-full font-label-caps text-label-caps text-on-surface-variant">High Protein</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 h-12 rounded-xl border-2 border-primary/20 text-primary font-bold hover:bg-primary/5 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-lg">shuffle</span>
+                            Swap Meal
+                        </button>
+<button class="flex items-center justify-center gap-2 h-12 rounded-xl border-2 border-outline/20 text-outline font-bold hover:bg-surface-container-high/50 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-lg">calendar_clock</span>
+                            Skip Day
+                        </button>
+</div>
+</div>
+</div>
+<!-- Dinner Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden shadow-sm">
+<div class="h-44 w-full relative">
+<img alt="Vegetarian Stir-Fry" class="w-full h-full object-cover" data-alt="A colorful and appetizing vegetarian stir-fry presented in a modern dark ceramic bowl. The dish is packed with snap peas, bell peppers, carrots, and tofu chunks, glazed in a glossy, savory sauce. The steam is subtly visible, suggesting freshness and warmth. The lighting is directional and warm, creating soft shadows and highlighting the vibrant vegetable colors. The overall mood is healthy and inviting, set against a clean, uncluttered tabletop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdquMHeGWYUN78XUvekcoe20-nuUT2mw92lkWq2PZhBhHGaeZYmrwAPshSV3w2NZLWF5e1CDwmgwcHdnJyf_FpBj-irhZ-GRWImDrdwqOAyohQIGVRwcK394JSNZeNduv1oDKAP8RzVu1KuiNmLkUBTOYxDmSb1fjwhKFeiKG64sbMwIUl5sZTDeQnvDY26juQg8LmmjuPo0zy7DuOiC8TvBRnjl24r8ytK1cGXz6NIf8aDRCc0LNh0vqLrPCEHmSzenIIl7KDAuM"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full font-label-caps text-label-caps text-primary shadow-sm uppercase">Dinner • 7:00 PM</span>
+<span class="px-3 py-1 bg-secondary-container/90 backdrop-blur-md rounded-full font-label-caps text-label-caps text-on-secondary-container shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+                             Custom Overridden
+                        </span>
+</div>
+</div>
+<div class="p-4 flex justify-between items-center">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Custom: Vegetarian Stir-Fry</h3>
+<p class="text-body-sm text-on-surface-variant">Modified for extra tofu and no broccoli.</p>
+</div>
+<button class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary">edit</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Promotional/Info Card (Bento Style Extra) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-tertiary-container/20 rounded-2xl p-4 flex flex-col justify-between border border-tertiary/10">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-4">water_drop</span>
+<div>
+<h4 class="font-bold text-on-tertiary-container">Hydration Goal</h4>
+<p class="text-body-sm text-on-tertiary-container/80">1.5L / 2.5L tracked</p>
+</div>
+</div>
+<div class="bg-secondary-container/10 rounded-2xl p-4 flex flex-col justify-between border border-secondary/10">
+<span class="material-symbols-outlined text-secondary text-3xl mb-4">workspace_premium</span>
+<div>
+<h4 class="font-bold text-on-secondary-container">Weekly Streak</h4>
+<p class="text-body-sm text-on-secondary-container/80">4 days consistent!</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md border-t border-outline-variant dark:border-outline shadow-sm flex justify-around items-center h-20 pb-safe px-4">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold hover:bg-primary-container/10 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+<div class="w-1 h-1 bg-primary rounded-full mt-0.5"></div>
+</a>
+<!-- Calendar -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/10 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-caps text-label-caps mt-1">Calendar</span>
+</a>
+<!-- QR ID -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/10 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">qr_code_2</span>
+<span class="font-label-caps text-label-caps mt-1">QR ID</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/10 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.transform = 'scale(0.96)';
+            });
+            btn.addEventListener('touchend', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Horizontal scroll animation for calendar
+        const calendar = document.querySelector('.overflow-x-auto');
+        if (calendar) {
+            // Center the active element on load
+            window.addEventListener('load', () => {
+                const active = calendar.querySelector('.bg-primary');
+                if (active) {
+                    const scrollLeft = active.offsetLeft - (calendar.offsetWidth / 2) + (active.offsetWidth / 2);
+                    calendar.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+                }
+            });
+        }
+    </script>
+</body></html>
