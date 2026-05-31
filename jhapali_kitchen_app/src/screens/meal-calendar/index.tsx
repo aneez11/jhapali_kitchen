@@ -2,19 +2,14 @@ import React, { useState } from 'react';
 import { ScrollView, View, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image as ExpoImage } from 'expo-image';
-import { SymbolView } from 'expo-symbols';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { CalendarGrid, CalendarDay } from '@/components/meal/calendar-grid';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/hooks/use-theme';
-import { BorderRadius } from '@/constants/theme';
-
-import _styles from './styles.module.scss';
-const styles = _styles as any;
 
 const MOCK_MONTH_DAYS: CalendarDay[] = [
   { dayNumber: 1, status: 'active' },
@@ -43,63 +38,70 @@ export default function MealCalendar() {
   const [selectedDay, setSelectedDay] = useState(3);
 
   return (
-    <ThemedView style={styles.container}>
-      {/* Top App Bar */}
-      <ThemedView style={styles.header}>
-        <SafeAreaView edges={['top']} style={styles.headerContent}>
-          <View style={styles.brandRow}>
-            <SymbolView name="restaurant" size={24} tintColor={theme.primary} />
-            <ThemedText type="headlineMd" style={{ color: theme.primary }}>Canteen Pro</ThemedText>
+    <ThemedView className="flex-1 bg-surface">
+      <ThemedView className="w-full z-50 bg-surface/90 border-b border-outline-variant" style={{ height: 110, backdropFilter: "blur(12px)" }}>
+        <SafeAreaView edges={['top']} className="flex-row justify-between items-center px-container-margin flex-1">
+          <View className="flex-row items-center gap-3">
+            <View className="w-10 h-10 rounded-full bg-secondary-container/30 items-center justify-center">
+              <MaterialCommunityIcons name="calendar-month-outline" size={22} color={theme.secondary} />
+            </View>
+            <View>
+              <ThemedText className="text-headline-md text-secondary">
+                Meal Schedule
+              </ThemedText>
+              <View className="self-start mt-0.5 px-2 py-0.5 rounded-full bg-secondary/10">
+                <ThemedText type="bodyXs" className="tracking-wider text-secondary uppercase">
+                  October 2024
+                </ThemedText>
+              </View>
+            </View>
           </View>
-          <View style={[styles.miniAvatar, { borderColor: theme.outlineVariant + '4D' }]}>
-            <ExpoImage
-              source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCtPyKWrqP5BiTsRGcRdcIbmeKJ9irEQXdG8VogtkmUiugbaIclr77RbBrkl-krVH8qDzaIZF99dEumpMIrIXDFttROdQHFMNygMw4ZqCQMNr9OguSjLasLblH7RqtWw3iEXPz4AQOYO2DU0qrwGJ5kBTEvd2lPRaZACdrjcalXFaTt3oFZ9V5E7cD6z1kxh9_F0CgFz_g4JJl7k1_-d95Ae8e06zQFM85p29QrG2HIuxYZH4oYzMqHPi_HHYg5FlE5QwJNY_Kmbg0' }}
-              style={styles.avatarImage}
-            />
-          </View>
+          <Pressable className="w-10 h-10 rounded-full items-center justify-center">
+            <MaterialCommunityIcons name="bell-outline" size={24} color={theme.onSurfaceVariant} />
+          </Pressable>
         </SafeAreaView>
       </ThemedView>
 
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: 16, paddingBottom: 96, paddingLeft: 16, paddingRight: 16 }}>
         {/* Header Section */}
-        <View style={styles.titleRow}>
+        <View className="flex-row justify-between items-end mb-6">
           <View>
-            <ThemedText type="labelCaps" style={{ color: theme.onSurfaceVariant, letterSpacing: 1 }}>SUBSCRIPTION</ThemedText>
-            <ThemedText type="headlineLg">Meal Calendar</ThemedText>
+            <ThemedText type="labelCaps" className="text-on-surface-variant">SUBSCRIPTION</ThemedText>
+            <ThemedText className="text-headline-lg">Meal Calendar</ThemedText>
           </View>
           <Button
             title="Bulk Skip"
             size="sm"
             type="secondary"
-            icon={<SymbolView name="calendar.badge.plus" size={16} tintColor={theme.onSecondaryContainer} />}
-            style={{ backgroundColor: theme.primaryContainer + '33', borderRadius: BorderRadius.md }}
+            icon={<MaterialCommunityIcons name="calendar-plus" size={16} color={theme.onSecondaryContainer} />}
+            style={{ backgroundColor: theme.primaryContainer + '33', borderRadius: 12 }}
           />
         </View>
 
         {/* Month Navigation */}
-        <View style={[styles.monthNav, { backgroundColor: theme.surfaceContainerLow }]}>
-          <Pressable style={styles.navBtn}>
-            <SymbolView name="chevron.left" size={20} tintColor={theme.primary} />
+        <View className="flex-row items-center justify-between px-2 py-2 rounded-xl bg-surface-container-low mb-4">
+          <Pressable className="w-10 h-10 rounded-lg items-center justify-center">
+            <MaterialCommunityIcons name="chevron-left" size={20} color={theme.primary} />
           </Pressable>
-          <ThemedText type="headlineMd">October 2024</ThemedText>
-          <Pressable style={styles.navBtn}>
-            <SymbolView name="chevron.right" size={20} tintColor={theme.primary} />
+          <ThemedText className="text-headline-md">October 2024</ThemedText>
+          <Pressable className="w-10 h-10 rounded-lg items-center justify-center">
+            <MaterialCommunityIcons name="chevron-right" size={20} color={theme.primary} />
           </Pressable>
         </View>
 
         {/* Legend */}
-        <View style={styles.legend}>
-          <View style={styles.legendItem}>
-            <View style={[styles.dot, { backgroundColor: theme.primaryContainer }]} />
-            <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>Active</ThemedText>
+        <View className="flex-row gap-4 mb-4">
+          <View className="flex-row items-center gap-1.5">
+            <View className="w-2.5 h-2.5 rounded-full bg-primary-container" />
+            <ThemedText type="bodySm" className="text-on-surface-variant">Active</ThemedText>
           </View>
-          <View style={styles.legendItem}>
-            <View style={[styles.dot, { backgroundColor: theme.error }]} />
-            <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>Skipped</ThemedText>
+          <View className="flex-row items-center gap-1.5">
+            <View className="w-2.5 h-2.5 rounded-full bg-error" />
+            <ThemedText type="bodySm" className="text-on-surface-variant">Skipped</ThemedText>
           </View>
-          <View style={styles.legendItem}>
-            <View style={[styles.dot, { backgroundColor: theme.secondaryContainer }]} />
-            <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>Swapped</ThemedText>
+          <View className="flex-row items-center gap-1.5">
+            <View className="w-2.5 h-2.5 rounded-full bg-secondary-container" />
+            <ThemedText type="bodySm" className="text-on-surface-variant">Swapped</ThemedText>
           </View>
         </View>
 
@@ -111,56 +113,54 @@ export default function MealCalendar() {
         />
 
         {/* Selected Day Details */}
-        <View style={styles.detailsSection}>
-          <View style={styles.detailsHeader}>
-            <SymbolView name="fork.knife" size={20} tintColor={theme.primary} />
-            <ThemedText type="headlineMd">Today's Menu</ThemedText>
+        <View className="mt-8">
+          <View className="flex-row items-center gap-2 mb-4">
+            <MaterialCommunityIcons name="silverware-fork-knife" size={20} color={theme.primary} />
+            <ThemedText className="text-headline-md">Today's Menu</ThemedText>
           </View>
           
-          <Card variant="outline" style={styles.detailCard}>
-            <View style={styles.detailImageContainer}>
+          <View className="bg-surface-container-lowest border border-outline-variant rounded-2xl overflow-hidden">
+            <View className="h-40">
               <ExpoImage
                 source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDD0PhyUGk_d17glSrjDzajOJ7SfM-g_rTJMYQZyyHREFtYzg8X_eizZIoWM842Ba1sgNyX5M4sFW_jYmlsbBGvFrUyYJl922VASP_RO__2B0ZOUxSJIciEYMbee1ltGMRY0feZ55mesS9EN5moAvyUYSzdlCiWU6ttPb-fb9xw3Gf_qxtrDRqQ7mNCgVtiy91k4F6J81DKNxH0ZU8Df4LJHVMDupU6QykN_bC0SToW4EtFk7pZdUit17ayaCa8BNl4NSYE7NBQOEM' }}
-                style={styles.detailImage}
+                className="w-full h-full"
               />
-              <View style={styles.detailOverlay}>
-                <View style={[styles.overlayTag, { backgroundColor: 'rgba(255,255,255,0.9)' }]}>
-                  <ThemedText type="labelCaps" style={{ color: theme.primary }}>640 kcal</ThemedText>
+              <View className="absolute top-3 right-3 flex-row gap-2">
+                <View className="px-3 py-1 rounded-full bg-surface-container-lowest/90">
+                  <ThemedText type="labelCaps" className="text-primary">640 kcal</ThemedText>
                 </View>
-                <View style={[styles.overlayTag, { backgroundColor: theme.primaryContainer }]}>
-                  <ThemedText type="labelCaps" style={{ color: theme.onPrimaryContainer }}>Premium</ThemedText>
+                <View className="px-3 py-1 rounded-full bg-primary-container">
+                  <ThemedText type="labelCaps" className="text-on-primary-container">Premium</ThemedText>
                 </View>
               </View>
             </View>
-            <View style={styles.detailContent}>
-              <ThemedText type="headlineMd">Glazed Atlantic Salmon Bowl</ThemedText>
-              <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant, marginTop: 4 }}>
+            <View className="p-4 gap-4">
+              <ThemedText className="text-headline-md">Glazed Atlantic Salmon Bowl</ThemedText>
+              <ThemedText type="bodySm" className="text-on-surface-variant">
                 Quinoa base with organic greens, honey-miso glaze, and sesame seeds.
               </ThemedText>
-              <View style={styles.detailTags}>
+              <View className="flex-row flex-wrap gap-2">
                 {['Gluten-Free', 'High Protein', 'Dairy Free'].map((t, i) => (
-                  <View key={i} style={[styles.detailTag, { backgroundColor: theme.surfaceContainer }]}>
-                    <ThemedText type="labelCaps" style={{ fontSize: 10 }}>{t}</ThemedText>
+                  <View key={i} className="px-2.5 py-1 rounded-lg bg-surface-container">
+                    <ThemedText type="labelCaps" className="text-on-surface-variant">{t}</ThemedText>
                   </View>
                 ))}
               </View>
-              <View style={[styles.detailFooter, { borderTopColor: theme.outlineVariant + '33' }]}>
+              <View className="pt-4 border-t border-outline-variant/20 flex-row items-center justify-between">
                 <View>
-                  <ThemedText type="labelCaps" style={{ color: theme.onSurfaceVariant + '99' }}>Status</ThemedText>
-                  <ThemedText type="bodyLg" style={{ color: theme.primary, fontWeight: '700' }}>Confirmed</ThemedText>
+                  <ThemedText type="labelCaps" className="text-on-surface-variant/60">Status</ThemedText>
+                  <ThemedText type="bodyLg" className="text-primary font-bold">Confirmed</ThemedText>
                 </View>
-                <View style={styles.detailActions}>
-                   <Pressable style={[styles.actionIconButton, { borderColor: theme.outline }]}>
-                      <SymbolView name="arrow.left.and.right" size={20} tintColor={theme.onSurfaceVariant} />
+                <View className="flex-row gap-3">
+                   <Pressable className="w-10 h-10 rounded-xl border border-outline items-center justify-center">
+                      <MaterialCommunityIcons name="swap-horizontal" size={20} color={theme.onSurfaceVariant} />
                    </Pressable>
                    <Button title="Skip Meal" size="sm" style={{ paddingHorizontal: 16 }} />
                 </View>
               </View>
             </View>
-          </Card>
+          </View>
         </View>
-
-        <View style={{ height: 120 }} />
       </ScrollView>
     </ThemedView>
   );

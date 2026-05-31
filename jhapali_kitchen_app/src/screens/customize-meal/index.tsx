@@ -10,9 +10,6 @@ import { ThemedView } from "@/components/themed-view";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 
-import _styles from "./styles.module.scss";
-const styles = _styles as any;
-
 export default function CustomizeMeal() {
   const theme = useTheme();
   const router = useRouter();
@@ -35,11 +32,28 @@ export default function CustomizeMeal() {
   ];
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={{ flex: 1 }}>
       {/* Header */}
-      <ThemedView style={styles.header}>
-        <SafeAreaView edges={["top"]} style={styles.headerContent}>
-          <Pressable onPress={() => router.back()} style={styles.iconButton}>
+      <ThemedView style={{ paddingLeft: 16, paddingRight: 16 }}>
+        <SafeAreaView
+          edges={["top"]}
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: 64,
+          }}
+        >
+          <Pressable
+            onPress={() => router.back()}
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 20,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <SymbolView
               name="chevron.left"
               size={24}
@@ -54,22 +68,45 @@ export default function CustomizeMeal() {
       </ThemedView>
 
       <ScrollView
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={{
+          paddingTop: 16,
+          paddingLeft: 16,
+          paddingRight: 16,
+        }}
         showsVerticalScrollIndicator={false}
       >
         {/* Hero Section */}
-        <View style={styles.heroSection}>
-          <View style={styles.heroImageWrapper}>
+        <View style={{ marginBottom: 32 }}>
+          <View
+            style={{
+              width: "100%",
+              aspectRatio: 4 / 3,
+              borderRadius: 24,
+              overflow: "hidden",
+              position: "relative",
+            }}
+          >
             <ExpoImage
               source={{
                 uri: "https://lh3.googleusercontent.com/aida-public/AB6AXuA6EIl5JWy8y3OthATLE8C41RSO0Ac7NAf_aMltOGV9VTGM-HRHrgXEsTImWJQHuKN83uAs4xPevqHJ-1eT4BsGWqtymIZ-wrbj_b6eDHcpZ_bF4SW1-locmxUb7u1P0XS2bIH8JxsKWkZ-dzkhLe9tt9pzm1Htc1c8AF5eN-ox5lsWwGtgygcpV8RWY0i4acKq8NAj9P943M7P8u1iQeYvppb2ryRqyjN1wKb7VW8cMylCWorx1YXFppsGUkf-u8w37YoYs31Obos",
               }}
-              style={styles.heroImage}
+              style={{ width: "100%", height: "100%" }}
             />
             <View
               style={[
-                styles.heroBadge,
-                { backgroundColor: "rgba(255,255,255,0.9)" },
+                {
+                  position: "absolute",
+                  bottom: 16,
+                  left: 16,
+                  paddingLeft: 12,
+                  paddingRight: 12,
+                  paddingTop: 6,
+                  paddingBottom: 6,
+                  borderRadius: 9999,
+                  borderWidth: 1,
+                  borderColor: theme.outlineVariant + '33',
+                },
+                { backgroundColor: theme.surfaceContainerLowest + 'E6' },
               ]}
             >
               <ThemedText type="labelCaps" style={{ color: theme.primary }}>
@@ -87,10 +124,19 @@ export default function CustomizeMeal() {
         </View>
 
         {/* Nutritional Grid */}
-        <View style={styles.statsGrid}>
+        <View style={{ flexDirection: "row", gap: 12, marginBottom: 32 }}>
           <View
             style={[
-              styles.statCard,
+              {
+                flex: 1,
+                padding: 16,
+                borderRadius: 16,
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 4,
+                borderWidth: 1,
+                borderColor: theme.outlineVariant + '33',
+              },
               { backgroundColor: theme.surfaceContainerLow },
             ]}
           >
@@ -106,7 +152,16 @@ export default function CustomizeMeal() {
           </View>
           <View
             style={[
-              styles.statCard,
+              {
+                flex: 1,
+                padding: 16,
+                borderRadius: 16,
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 4,
+                borderWidth: 1,
+                borderColor: theme.outlineVariant + '33',
+              },
               { backgroundColor: theme.surfaceContainerLow },
             ]}
           >
@@ -122,7 +177,16 @@ export default function CustomizeMeal() {
           </View>
           <View
             style={[
-              styles.statCard,
+              {
+                flex: 1,
+                padding: 16,
+                borderRadius: 16,
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 4,
+                borderWidth: 1,
+                borderColor: theme.outlineVariant + '33',
+              },
               { backgroundColor: theme.surfaceContainerLow },
             ]}
           >
@@ -139,22 +203,29 @@ export default function CustomizeMeal() {
         </View>
 
         {/* Dietary Adjustments */}
-        <View style={styles.section}>
+        <View style={{ marginBottom: 32 }}>
           <ThemedText type="headlineMd" style={{ marginBottom: 16 }}>
             Dietary Adjustments
           </ThemedText>
-          <View style={styles.adjustmentList}>
+          <View style={{ gap: 12 }}>
             <Pressable
               onPress={() => setIsVegan(!isVegan)}
               style={[
-                styles.adjustmentItem,
+                {
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: 16,
+                  borderRadius: 16,
+                  borderWidth: 1,
+                },
                 {
                   backgroundColor: theme.surfaceContainer,
                   borderColor: theme.outlineVariant + "33",
                 },
               ]}
             >
-              <View style={styles.adjustmentLeft}>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
                 <SymbolView
                   name="leaf.fill"
                   size={20}
@@ -171,14 +242,21 @@ export default function CustomizeMeal() {
             <Pressable
               onPress={() => setIsGlutenFree(!isGlutenFree)}
               style={[
-                styles.adjustmentItem,
+                {
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: 16,
+                  borderRadius: 16,
+                  borderWidth: 1,
+                },
                 {
                   backgroundColor: theme.surfaceContainer,
                   borderColor: theme.outlineVariant + "33",
                 },
               ]}
             >
-              <View style={styles.adjustmentLeft}>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
                 <SymbolView name="nosign" size={20} tintColor={theme.primary} />
                 <ThemedText type="bodyLg">Gluten Free Grains</ThemedText>
               </View>
@@ -191,14 +269,21 @@ export default function CustomizeMeal() {
             <Pressable
               onPress={() => setIsLowSodium(!isLowSodium)}
               style={[
-                styles.adjustmentItem,
+                {
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: 16,
+                  borderRadius: 16,
+                  borderWidth: 1,
+                },
                 {
                   backgroundColor: theme.surfaceContainer,
                   borderColor: theme.outlineVariant + "33",
                 },
               ]}
             >
-              <View style={styles.adjustmentLeft}>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
                 <SymbolView
                   name="heart.fill"
                   size={20}
@@ -216,21 +301,28 @@ export default function CustomizeMeal() {
         </View>
 
         {/* Extra Portions */}
-        <View style={styles.section}>
+        <View style={{ marginBottom: 32 }}>
           <ThemedText type="headlineMd" style={{ marginBottom: 16 }}>
             Extra Portions
           </ThemedText>
-          <View style={styles.chipsContainer}>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
             {EXTRAS_OPTIONS.map((option) => (
               <Pressable
                 key={option}
                 onPress={() => toggleExtra(option)}
                 style={[
-                  styles.chip,
+                  {
+                    paddingLeft: 16,
+                    paddingRight: 16,
+                    paddingTop: 10,
+                    paddingBottom: 10,
+                    borderRadius: 9999,
+                    borderWidth: 1,
+                  },
                   {
                     backgroundColor: extras.includes(option)
                       ? theme.primaryContainer
-                      : "#fff",
+                      : theme.surfaceContainerLowest,
                     borderColor: extras.includes(option)
                       ? theme.primary
                       : theme.outlineVariant + "80",
@@ -253,8 +345,15 @@ export default function CustomizeMeal() {
         </View>
 
         {/* Special Instructions */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
+        <View style={{ marginBottom: 32 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 8,
+              marginBottom: 16,
+            }}
+          >
             <SymbolView
               name="square.and.pencil"
               size={20}
@@ -267,7 +366,15 @@ export default function CustomizeMeal() {
             placeholder="E.g., 'Please make it extra spicy'..."
             placeholderTextColor={theme.onSurfaceVariant + "80"}
             style={[
-              styles.textArea,
+              {
+                width: "100%",
+                height: 120,
+                borderRadius: 16,
+                padding: 16,
+                textAlignVertical: "top",
+                fontSize: 16,
+                borderWidth: 1,
+              },
               {
                 backgroundColor: theme.surfaceContainerLow,
                 color: theme.onSurface,
@@ -282,9 +389,20 @@ export default function CustomizeMeal() {
 
       {/* Action Footer */}
       <ThemedView
-        style={[styles.footer, { borderTopColor: theme.outlineVariant + "33" }]}
+        style={[
+          {
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            padding: 16,
+            paddingBottom: 32,
+            borderTopWidth: 1,
+          },
+          { borderTopColor: theme.outlineVariant + "33" },
+        ]}
       >
-        <View style={styles.footerActions}>
+        <View style={{ flexDirection: "row", gap: 12 }}>
           <Button
             title="Cancel"
             type="outline"

@@ -52,7 +52,7 @@ export function TabButton({ children, isFocused, icon, ...props }: TabTriggerSlo
         ]}>
         {icon && (
             <SymbolView 
-                name={icon} 
+                name={icon as any} 
                 size={20} 
                 tintColor={isFocused ? colors.primary : colors.onSurfaceVariant} 
             />

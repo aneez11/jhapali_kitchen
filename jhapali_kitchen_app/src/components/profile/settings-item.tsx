@@ -31,7 +31,7 @@ export function SettingsItem({
       ]}
     >
       <View style={styles.content}>
-        <SymbolView name={icon} size={22} tintColor={theme.onSurfaceVariant} />
+        <SymbolView name={icon as any} size={22} tintColor={theme.onSurfaceVariant} />
         <View style={styles.textContainer}>
           <ThemedText type="bodyLg">{title}</ThemedText>
           <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>{subtitle}</ThemedText>

@@ -8,9 +8,6 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { useTheme } from '@/hooks/use-theme';
 
-import _styles from './styles.module.scss';
-const styles = _styles as any;
-
 const FINANCIAL_CARDS = [
   {
     label: 'Total Outstanding Dues',
@@ -138,50 +135,50 @@ export default function BillingAdmin() {
   };
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={[styles.header, { borderBottomColor: theme.outlineVariant }]}>
-        <SafeAreaView edges={['top']} style={styles.headerContent}>
-          <View style={styles.headerLeft}>
-            <Pressable style={styles.iconButton} onPress={() => router.back()}>
+    <ThemedView style={{ flex: 1 }}>
+      <ThemedView style={[{ paddingLeft: 16, paddingRight: 16, borderBottomWidth: 1, zIndex: 50, backgroundColor: theme.surface + 'E6' }, { borderBottomColor: theme.outlineVariant }]}>
+        <SafeAreaView edges={['top']} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <Pressable style={{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' }} onPress={() => router.back()}>
               <SymbolView name="chevron.left" size={24} tintColor={theme.onSurface} />
             </Pressable>
-            <View style={styles.brandIcon}>
-              <SymbolView name="leaf.fill" size={18} tintColor="#ffffff" />
+            <View style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: theme.primary, alignItems: 'center', justifyContent: 'center' }}>
+              <SymbolView name="leaf.fill" size={18} tintColor={theme.onPrimary} />
             </View>
             <ThemedText type="headlineMd" style={{ fontSize: 16 }}>Admin</ThemedText>
           </View>
-          <Pressable style={styles.iconButton}>
+          <Pressable style={{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' }}>
             <SymbolView name="bell.fill" size={22} tintColor={theme.onSurfaceVariant} />
           </Pressable>
         </SafeAreaView>
       </ThemedView>
 
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={{ paddingTop: 24, paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
         {/* Page Title */}
-        <View style={styles.sectionPadding}>
-          <ThemedText type="headlineLg" style={styles.pageTitle}>Financial Oversight</ThemedText>
+        <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <ThemedText type="headlineLg" style={{ marginBottom: 4 }}>Financial Oversight</ThemedText>
           <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant, marginBottom: 20 }}>
             Tracking dues and collection efficiency for May 2024
           </ThemedText>
         </View>
 
         {/* Financial Overview Cards */}
-        <View style={styles.sectionPadding}>
-          <View style={styles.financialGrid}>
+        <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
             {FINANCIAL_CARDS.map((card, index) => {
               const iconBgColor = theme[`${card.bgColor}` as keyof typeof theme] || theme.surfaceContainerHigh;
               const iconColor = theme[card.color as keyof typeof theme] || theme.primary;
               return (
                 <View
                   key={index}
-                  style={[styles.finCard, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}
+                  style={[{ width: '48%', padding: 16, borderRadius: 16, borderWidth: 1, gap: 12 }, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}
                 >
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <View style={[styles.finCardIcon, { backgroundColor: iconBgColor }]}>
+                    <View style={[{ width: 40, height: 40, borderRadius: 10, alignItems: 'center', justifyContent: 'center' }, { backgroundColor: iconBgColor }]}>
                       <SymbolView name={card.icon} size={20} tintColor={iconColor} />
                     </View>
                     {card.trend ? (
-                      <View style={styles.finCardTrend}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                         <SymbolView
                           name={card.trendUp ? 'arrow.up' : 'arrow.down'}
                           size={12}
@@ -195,7 +192,7 @@ export default function BillingAdmin() {
                         </ThemedText>
                       </View>
                     ) : (
-                      <View style={styles.finCardTrend}>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                         <View style={{ flexDirection: 'row', gap: 2, alignItems: 'flex-end' }}>
                           {[40, 60, 50, 80, 65].map((h, i) => (
                             <View
@@ -215,7 +212,7 @@ export default function BillingAdmin() {
                   <ThemedText type="labelCaps" style={{ color: theme.onSurfaceVariant, fontSize: 10, marginTop: 'auto' }}>
                     {card.label.toUpperCase()}
                   </ThemedText>
-                  <ThemedText style={[styles.finCardValue, { color: theme.onSurface }]}>
+                  <ThemedText style={[{ fontSize: 24, fontWeight: '700', lineHeight: 32 }, { color: theme.onSurface }]}>
                     {card.value}
                   </ThemedText>
                 </View>
@@ -225,10 +222,10 @@ export default function BillingAdmin() {
         </View>
 
         {/* Search & Filter */}
-        <View style={styles.section}>
-          <View style={styles.sectionPadding}>
+        <View style={{ marginBottom: 32 }}>
+          <View style={{ paddingLeft: 16, paddingRight: 16 }}>
             <View style={{ marginBottom: 16 }}>
-              <View style={[styles.chartCard, { backgroundColor: theme.surfaceContainerLow, borderColor: theme.outlineVariant }]}>
+              <View style={[{ padding: 16, borderRadius: 16, borderWidth: 1 }, { backgroundColor: theme.surfaceContainerLow, borderColor: theme.outlineVariant }]}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, height: 44 }}>
                   <SymbolView name="magnifyingglass" size={20} tintColor={theme.onSurfaceVariant} />
                   <TextInput
@@ -241,13 +238,13 @@ export default function BillingAdmin() {
                 </View>
               </View>
             </View>
-            <View style={styles.filterRow}>
+            <View style={{ flexDirection: 'row', gap: 8 }}>
               {['All', 'Overdue', 'Pending', 'Paid'].map((f) => (
                 <Pressable
                   key={f}
                   onPress={() => setFilter(f)}
                   style={[
-                    styles.filterChip,
+                    { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 9999, borderWidth: 1 },
                     {
                       backgroundColor: filter === f ? theme.primary : theme.surfaceContainerLow,
                       borderColor: filter === f ? theme.primary : theme.outlineVariant,
@@ -267,9 +264,9 @@ export default function BillingAdmin() {
         </View>
 
         {/* Customer Dues List */}
-        <View style={styles.section}>
-          <View style={styles.sectionPadding}>
-            <View style={styles.tableHeader}>
+        <View style={{ marginBottom: 32 }}>
+          <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
               <ThemedText type="headlineMd">Customer Dues</ThemedText>
               <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>
                 1-4 of 245
@@ -279,27 +276,27 @@ export default function BillingAdmin() {
             {CUSTOMERS.map((customer, index) => (
               <View
                 key={index}
-                style={[styles.customerRow, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}
+                style={[{ flexDirection: 'row', alignItems: 'center', paddingVertical: 12, paddingHorizontal: 16, marginBottom: 4, borderRadius: 12, borderWidth: 1 }, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}
               >
-                <View style={[styles.customerAvatar, { backgroundColor: theme.primary + '1A' }]}>
+                <View style={[{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', marginRight: 12 }, { backgroundColor: theme.primary + '1A' }]}>
                   <ThemedText type="bodySm" style={{ color: theme.primary, fontWeight: '700' }}>
                     {customer.initials}
                   </ThemedText>
                 </View>
-                <View style={styles.customerInfo}>
+                <View style={{ flex: 1 }}>
                   <ThemedText type="bodyLg" style={{ fontWeight: '600' }}>{customer.name}</ThemedText>
-                  <View style={styles.customerMeta}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 2 }}>
                     <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>
                       {customer.empId}
                     </ThemedText>
-                    <View style={[styles.planBadge, { backgroundColor: theme.surfaceContainerHigh }]}>
+                    <View style={[{ paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4 }, { backgroundColor: theme.surfaceContainerHigh }]}>
                       <ThemedText type="labelCaps" style={{ color: theme.onSurfaceVariant, fontSize: 9 }}>
                         {customer.plan}
                       </ThemedText>
                     </View>
                   </View>
                 </View>
-                <View style={styles.customerRight}>
+                <View style={{ alignItems: 'flex-end' }}>
                   <ThemedText
                     type="bodyLg"
                     style={{
@@ -311,12 +308,12 @@ export default function BillingAdmin() {
                   </ThemedText>
                   <View
                     style={[
-                      styles.statusBadge,
+                      { flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 9999 },
                       { backgroundColor: statusColor(customer.statusColor) + '1A' },
                     ]}
                   >
                     <View
-                      style={[styles.statusDot, { backgroundColor: statusColor(customer.statusColor) }]}
+                      style={[{ width: 6, height: 6, borderRadius: 3 }, { backgroundColor: statusColor(customer.statusColor) }]}
                     />
                     <ThemedText
                       type="labelCaps"
@@ -325,7 +322,7 @@ export default function BillingAdmin() {
                       {customer.status}
                     </ThemedText>
                   </View>
-                  <View style={styles.actionRow}>
+                  <View style={{ flexDirection: 'row', gap: 4, marginTop: 8 }}>
                     <Pressable style={{ padding: 4 }}>
                       <SymbolView name="creditcard.fill" size={16} tintColor={theme.primary} />
                     </Pressable>
@@ -340,21 +337,21 @@ export default function BillingAdmin() {
               </View>
             ))}
 
-            <View style={styles.pagination}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
               <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>
                 Showing 1-4 of 245
               </ThemedText>
-              <View style={styles.paginationBtns}>
-                <Pressable style={[styles.pageBtn, { borderColor: theme.outlineVariant }]}>
+              <View style={{ flexDirection: 'row', gap: 4 }}>
+                <Pressable style={[{ width: 32, height: 32, borderRadius: 8, borderWidth: 1, alignItems: 'center', justifyContent: 'center' }, { borderColor: theme.outlineVariant }]}>
                   <SymbolView name="chevron.left" size={14} tintColor={theme.onSurfaceVariant} />
                 </Pressable>
-                <Pressable style={[styles.pageBtn, styles.pageBtnActive, { backgroundColor: theme.primary }]}>
+                <Pressable style={[{ width: 32, height: 32, borderRadius: 8, borderWidth: 1, alignItems: 'center', justifyContent: 'center' }, { borderWidth: 0 }, { backgroundColor: theme.primary }]}>
                   <ThemedText type="bodySm" style={{ color: theme.onPrimary, fontWeight: '700' }}>1</ThemedText>
                 </Pressable>
-                <Pressable style={[styles.pageBtn, { borderColor: theme.outlineVariant }]}>
+                <Pressable style={[{ width: 32, height: 32, borderRadius: 8, borderWidth: 1, alignItems: 'center', justifyContent: 'center' }, { borderColor: theme.outlineVariant }]}>
                   <ThemedText type="bodySm" style={{ color: theme.onSurface, fontWeight: '700' }}>2</ThemedText>
                 </Pressable>
-                <Pressable style={[styles.pageBtn, { borderColor: theme.outlineVariant }]}>
+                <Pressable style={[{ width: 32, height: 32, borderRadius: 8, borderWidth: 1, alignItems: 'center', justifyContent: 'center' }, { borderColor: theme.outlineVariant }]}>
                   <SymbolView name="chevron.right" size={14} tintColor={theme.onSurfaceVariant} />
                 </Pressable>
               </View>
@@ -363,16 +360,16 @@ export default function BillingAdmin() {
         </View>
 
         {/* Collection Trend Chart */}
-        <View style={styles.section}>
-          <View style={styles.sectionPadding}>
-            <View style={[styles.chartCard, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}>
-              <View style={styles.chartHeader}>
+        <View style={{ marginBottom: 32 }}>
+          <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+            <View style={[{ padding: 16, borderRadius: 16, borderWidth: 1 }, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
                 <ThemedText type="headlineMd">Collection Trend</ThemedText>
                 <SymbolView name="ellipsis" size={20} tintColor={theme.onSurfaceVariant} />
               </View>
-              <View style={[styles.chartContainer, { borderBottomColor: theme.outlineVariant }]}>
+              <View style={[{ height: 140, flexDirection: 'row', alignItems: 'flex-end', gap: 8, paddingHorizontal: 8, borderBottomWidth: 1 }, { borderBottomColor: theme.outlineVariant }]}>
                 {CHART_DATA.map((bar, index) => (
-                  <View key={index} style={styles.chartBar}>
+                  <View key={index} style={{ flex: 1, borderTopLeftRadius: 4, borderTopRightRadius: 4 }}>
                     <View
                       style={{
                         height: `${bar.value}%`,
@@ -385,14 +382,14 @@ export default function BillingAdmin() {
                   </View>
                 ))}
               </View>
-              <View style={styles.chartLabels}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 8, paddingHorizontal: 8 }}>
                 {CHART_DATA.map((bar, index) => (
-                  <ThemedText key={index} style={styles.chartLabel} themeColor="textSecondary">
+                  <ThemedText key={index} style={{ fontSize: 10, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.5 }} themeColor="textSecondary">
                     {bar.label}
                   </ThemedText>
                 ))}
               </View>
-              <View style={[styles.insightCard, { backgroundColor: theme.primary + '08', borderColor: theme.primary + '10' }]}>
+              <View style={[{ marginTop: 16, padding: 16, borderRadius: 12, borderWidth: 1 }, { backgroundColor: theme.primary + '08', borderColor: theme.primary + '10' }]}>
                 <ThemedText type="bodySm" style={{ color: theme.primary, fontWeight: '600' }}>
                   Insights
                 </ThemedText>
@@ -405,9 +402,9 @@ export default function BillingAdmin() {
         </View>
 
         {/* Priority Reminders */}
-        <View style={styles.section}>
-          <View style={styles.sectionPadding}>
-            <View style={[styles.chartCard, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}>
+        <View style={{ marginBottom: 32 }}>
+          <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+            <View style={[{ padding: 16, borderRadius: 16, borderWidth: 1 }, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}>
               <ThemedText type="headlineMd" style={{ marginBottom: 12 }}>Priority Reminders</ThemedText>
               {REMINDERS.map((reminder, index) => {
                 const iconColor = theme[reminder.color as keyof typeof theme] || theme.primary;
@@ -415,19 +412,19 @@ export default function BillingAdmin() {
                 return (
                   <View
                     key={index}
-                    style={[styles.reminderItem, { borderBottomColor: index < REMINDERS.length - 1 ? theme.outlineVariant + '66' : 'transparent' }]}
+                    style={[{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12, borderBottomWidth: 1 }, { borderBottomColor: index < REMINDERS.length - 1 ? theme.outlineVariant + '66' : 'transparent' }]}
                   >
-                    <View style={[styles.reminderIcon, { backgroundColor: iconBg + '66' }]}>
+                    <View style={[{ width: 36, height: 36, borderRadius: 10, alignItems: 'center', justifyContent: 'center' }, { backgroundColor: iconBg + '66' }]}>
                       <SymbolView name={reminder.icon} size={18} tintColor={iconColor} />
                     </View>
-                    <View style={styles.reminderContent}>
+                    <View style={{ flex: 1 }}>
                       <ThemedText type="bodySm" style={{ fontWeight: '600' }}>{reminder.title}</ThemedText>
                       <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant, fontSize: 11 }}>
                         {reminder.subtitle}
                       </ThemedText>
                     </View>
                     {reminder.spinning ? (
-                      <View style={[styles.spinner, { borderColor: theme.primary, borderTopColor: 'transparent' }]} />
+                      <View style={[{ width: 16, height: 16, borderRadius: 8, borderWidth: 2 }, { borderColor: theme.primary, borderTopColor: 'transparent' }]} />
                     ) : (
                       <SymbolView name="chevron.right" size={14} tintColor={theme.onSurfaceVariant} />
                     )}
@@ -439,12 +436,12 @@ export default function BillingAdmin() {
         </View>
 
         {/* Pro Tip */}
-        <View style={styles.sectionPadding}>
-          <View style={[styles.proTipCard, { backgroundColor: theme.primaryContainer + '1A', borderColor: theme.primary + '20' }]}>
-            <View style={[styles.proTipIcon, { backgroundColor: theme.primary + '1A' }]}>
+        <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <View style={[{ flexDirection: 'row', alignItems: 'center', gap: 16, padding: 16, borderRadius: 16, borderWidth: 1 }, { backgroundColor: theme.primaryContainer + '1A', borderColor: theme.primary + '20' }]}>
+            <View style={[{ width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' }, { backgroundColor: theme.primary + '1A' }]}>
               <SymbolView name="lightbulb.fill" size={24} tintColor={theme.primary} />
             </View>
-            <View style={styles.proTipContent}>
+            <View style={{ flex: 1 }}>
               <ThemedText type="bodySm" style={{ fontWeight: '600', color: theme.primary }}>
                 Pro Tip
               </ThemedText>

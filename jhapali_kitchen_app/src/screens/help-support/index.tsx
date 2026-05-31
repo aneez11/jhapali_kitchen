@@ -11,9 +11,6 @@ import { ThemedView } from '@/components/themed-view';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/hooks/use-theme';
 
-import _styles from './styles.module.scss';
-const styles = _styles as any;
-
 const QUICK_ACTIONS = [
   {
     title: 'Subscription',
@@ -77,8 +74,8 @@ function FAQItem({
   };
 
   return (
-    <View style={[styles.faqItem, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}>
-      <Pressable style={styles.faqHeader} onPress={toggle}>
+    <View style={[{ borderWidth: 1, borderRadius: 12, overflow: 'hidden' }, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}>
+      <Pressable style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 16 }} onPress={toggle}>
         <ThemedText type="bodyLg" style={{ fontWeight: '600', flex: 1 }}>{question}</ThemedText>
         <SymbolView
           name={open ? 'chevron.up' : 'chevron.down'}
@@ -87,7 +84,7 @@ function FAQItem({
         />
       </Pressable>
       {open && (
-        <View style={styles.faqContent}>
+        <View style={{ paddingHorizontal: 16, paddingBottom: 16 }}>
           <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant, lineHeight: 22 }}>
             {answer}
           </ThemedText>
@@ -109,16 +106,16 @@ export default function HelpSupport() {
   );
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={[styles.header, { borderBottomColor: theme.outlineVariant }]}>
-        <SafeAreaView edges={['top']} style={styles.headerContent}>
-          <View style={styles.headerLeft}>
-            <Pressable style={styles.iconButton} onPress={() => router.back()}>
+    <ThemedView style={{ flex: 1 }}>
+      <ThemedView style={[{ paddingLeft: 16, paddingRight: 16, borderBottomWidth: 1, zIndex: 50, backgroundColor: theme.surface + 'E6' }, { borderBottomColor: theme.outlineVariant }]}>
+        <SafeAreaView edges={['top']} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <Pressable style={{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' }} onPress={() => router.back()}>
               <SymbolView name="chevron.left" size={24} tintColor={theme.onSurface} />
             </Pressable>
             <ThemedText type="headlineMd">Help & Support</ThemedText>
           </View>
-          <View style={[styles.iconButton, { borderWidth: 2, borderColor: theme.primary + '33', borderRadius: 20, overflow: 'hidden' }]}>
+          <View style={[{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' }, { borderWidth: 2, borderColor: theme.primary + '33', borderRadius: 20, overflow: 'hidden' }]}>
             <ExpoImage
               source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDp95JLCE2dbhqEXEQSAzwyBFJ0h0_Gb7Tf9IVLG0vW6DNhzmQX9BZJ10Jdp4Txi7YWz2jAEI2BYtYLk73tS1LMpNpR1uwGVKpurRhC9P807896x1gkfsj7o5z46Fi1XLayPYN_apR_WCw_2suld1WRnN8ugo6n5JErmPju7Nvc_-S1V2XsLe7dcJA77OE4O482NWYrmWwV3_nTX8-xOJD0x4B4RkRrQpPgtIkCl2iLkj5MmGnYj7WM2T0omSqPWV5tqIL1-2cB1Wg' }}
               style={{ width: 36, height: 36, borderRadius: 18 }}
@@ -127,15 +124,15 @@ export default function HelpSupport() {
         </SafeAreaView>
       </ThemedView>
 
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={{ paddingTop: 24, paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
         {/* Search */}
-        <View style={styles.sectionPadding}>
-          <View style={styles.searchSection}>
-            <ThemedText type="headlineMd" style={styles.searchLabel}>How can we help?</ThemedText>
-            <View style={[styles.searchBar, { backgroundColor: theme.surfaceContainerLow, borderColor: theme.outlineVariant }]}>
+        <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <View style={{ marginBottom: 24 }}>
+            <ThemedText type="headlineMd" style={{ marginBottom: 12 }}>How can we help?</ThemedText>
+            <View style={[{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, height: 52, borderRadius: 12, borderWidth: 1 }, { backgroundColor: theme.surfaceContainerLow, borderColor: theme.outlineVariant }]}>
               <SymbolView name="magnifyingglass" size={20} tintColor={theme.onSurfaceVariant} />
               <TextInput
-                style={[styles.searchInput, { color: theme.onSurface }]}
+                style={[{ flex: 1, fontFamily: 'Inter', fontSize: 16, lineHeight: 24 }, { color: theme.onSurface }]}
                 placeholder="Search help topics..."
                 placeholderTextColor={theme.outlineVariant}
                 value={search}
@@ -145,7 +142,7 @@ export default function HelpSupport() {
           </View>
 
           {/* Quick Actions */}
-          <View style={styles.quickActionsGrid}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
             {QUICK_ACTIONS.map((action, index) => {
               const colorKey = action.color as keyof typeof theme;
               const containerColor = theme[`${action.color}Container` as keyof typeof theme] || theme.surfaceContainerHigh;
@@ -155,12 +152,12 @@ export default function HelpSupport() {
                 <View
                   key={index}
                   style={[
-                    styles.quickActionCard,
-                    action.halfWidth ? styles.quickActionHalf : styles.quickActionFull,
+                    { padding: 16, borderRadius: 16, borderWidth: 1, gap: 12 },
+                    action.halfWidth ? { width: '48%' } : { width: '100%' },
                     { backgroundColor: containerColor + '1A', borderColor: iconColor + '20' },
                   ]}
                 >
-                  <View style={[styles.quickActionIcon, { backgroundColor: iconColor + '1A' }]}>
+                  <View style={[{ width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' }, { backgroundColor: iconColor + '1A' }]}>
                     <SymbolView name={action.icon} size={22} tintColor={iconColor} />
                   </View>
                   <ThemedText type="bodyLg" style={{ fontWeight: '600' }}>{action.title}</ThemedText>
@@ -174,12 +171,12 @@ export default function HelpSupport() {
         </View>
 
         {/* FAQ */}
-        <View style={styles.section}>
-          <View style={styles.sectionPadding}>
+        <View style={{ marginBottom: 32 }}>
+          <View style={{ paddingLeft: 16, paddingRight: 16 }}>
             <ThemedText type="headlineMd" style={{ marginBottom: 16 }}>Frequently Asked Questions</ThemedText>
           </View>
-          <View style={styles.sectionPadding}>
-            <View style={styles.faqSection}>
+          <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+            <View style={{ gap: 8 }}>
               {filteredFAQs.map((item, index) => (
                 <FAQItem key={index} question={item.question} answer={item.answer} theme={theme} />
               ))}
@@ -188,12 +185,12 @@ export default function HelpSupport() {
         </View>
 
         {/* Contact Support */}
-        <View style={styles.sectionPadding}>
-          <View style={[styles.contactCard, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}>
-            <View style={[styles.contactIcon, { backgroundColor: theme.primaryContainer + '33' }]}>
+        <View style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <View style={[{ padding: 16, borderRadius: 16, borderWidth: 1, flexDirection: 'row', alignItems: 'center', gap: 16 }, { backgroundColor: theme.surfaceContainerLowest, borderColor: theme.outlineVariant }]}>
+            <View style={[{ width: 56, height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center' }, { backgroundColor: theme.primaryContainer + '33' }]}>
               <SymbolView name="person.crop.circle.fill" size={28} tintColor={theme.primary} />
             </View>
-            <View style={styles.contactInfo}>
+            <View style={{ flex: 1 }}>
               <ThemedText type="bodyLg" style={{ fontWeight: '600' }}>Still need help?</ThemedText>
               <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant, marginTop: 2 }}>
                 Our support team is here for you

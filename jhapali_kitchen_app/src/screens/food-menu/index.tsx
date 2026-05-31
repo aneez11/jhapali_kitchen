@@ -9,9 +9,6 @@ import { ThemedView } from '@/components/themed-view';
 import { MenuItem } from '@/components/food/menu-item';
 import { useTheme } from '@/hooks/use-theme';
 
-import _styles from './styles.module.scss';
-const styles = _styles as any;
-
 const CATEGORIES = ['All Items', 'Daily Specials', 'Local Favorites', 'Snacks'];
 
 export default function FoodMenu() {
@@ -20,45 +17,85 @@ export default function FoodMenu() {
   const [activeCategory, setActiveCategory] = useState('All Items');
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={styles.header}>
-        <SafeAreaView edges={['top']} style={styles.headerContent}>
-          <View style={styles.brandRow}>
+    <ThemedView style={{ flex: 1 }}>
+      <ThemedView style={{ paddingLeft: 16, paddingRight: 16 }}>
+        <SafeAreaView
+          edges={['top']}
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            height: 64,
+          }}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
             <SymbolView name="fork.knife" size={24} tintColor={theme.primary} />
             <ThemedText type="headlineMd" style={{ color: theme.primary }}>Canteen Pro</ThemedText>
           </View>
-          <Pressable style={styles.iconButton}>
+          <Pressable
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 20,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             <SymbolView name="person.circle" size={28} tintColor={theme.onSurfaceVariant} />
           </Pressable>
         </SafeAreaView>
       </ThemedView>
 
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        <View style={styles.titleSection}>
+      <ScrollView contentContainerStyle={{ paddingTop: 16 }} showsVerticalScrollIndicator={false}>
+        <View style={{ paddingLeft: 16, paddingRight: 16, marginBottom: 32, gap: 4 }}>
           <ThemedText type="headlineLg">Food Menu</ThemedText>
           <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>
             Select your favorites or use your daily pass items.
           </ThemedText>
         </View>
 
-        <View style={styles.searchSection}>
-          <View style={[styles.searchBar, { backgroundColor: theme.surfaceContainerLow }]}>
+        <View style={{ paddingLeft: 16, paddingRight: 16, marginBottom: 32, gap: 16 }}>
+          <View
+            style={[
+              {
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingLeft: 16,
+                paddingRight: 16,
+                height: 48,
+                borderRadius: 12,
+                gap: 12,
+              },
+              { backgroundColor: theme.surfaceContainerLow },
+            ]}
+          >
             <SymbolView name="magnifyingglass" size={20} tintColor={theme.onSurfaceVariant} />
             <TextInput
               placeholder="Search menu..."
               placeholderTextColor={theme.onSurfaceVariant}
-              style={[styles.searchInput, { color: theme.onSurface }]}
+              style={[{ flex: 1, fontSize: 16 }, { color: theme.onSurface }]}
             />
           </View>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chipsContainer}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ gap: 8 }}
+          >
             {CATEGORIES.map((category) => (
               <Pressable
                 key={category}
                 onPress={() => setActiveCategory(category)}
                 style={[
-                  styles.chip,
                   {
-                    backgroundColor: activeCategory === category ? theme.primary : theme.surfaceContainerHigh,
+                    paddingLeft: 16,
+                    paddingRight: 16,
+                    paddingTop: 8,
+                    paddingBottom: 8,
+                    borderRadius: 9999,
+                  },
+                  {
+                    backgroundColor:
+                      activeCategory === category ? theme.primary : theme.surfaceContainerHigh,
                   },
                 ]}
               >
@@ -73,8 +110,15 @@ export default function FoodMenu() {
           </ScrollView>
         </View>
 
-        <View style={styles.menuSection}>
-          <View style={styles.sectionHeader}>
+        <View style={{ marginBottom: 32, paddingLeft: 16, paddingRight: 16 }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: 16,
+            }}
+          >
             <ThemedText type="headlineMd">Daily Specials</ThemedText>
             <ThemedText type="labelCaps" style={{ color: theme.primary }}>Fresh Today</ThemedText>
           </View>
@@ -91,8 +135,15 @@ export default function FoodMenu() {
           />
         </View>
 
-        <View style={styles.menuSection}>
-          <View style={styles.sectionHeader}>
+        <View style={{ marginBottom: 32, paddingLeft: 16, paddingRight: 16 }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: 16,
+            }}
+          >
             <ThemedText type="headlineMd">Local Favorites</ThemedText>
             <SymbolView name="heart.fill" size={20} tintColor={theme.secondary} />
           </View>
@@ -108,9 +159,9 @@ export default function FoodMenu() {
           />
         </View>
 
-        <View style={styles.menuSection}>
+        <View style={{ marginBottom: 32, paddingLeft: 16, paddingRight: 16 }}>
            <ThemedText type="headlineMd" style={{ marginBottom: 16 }}>Snacks</ThemedText>
-           <View style={styles.gridRow}>
+           <View style={{ flexDirection: 'row', gap: 16 }}>
               <MenuItem
                 title="Samosa (2pcs)"
                 description=""
@@ -130,8 +181,27 @@ export default function FoodMenu() {
       </ScrollView>
 
       {/* Cart FAB */}
-      <View style={styles.fabContainer}>
-         <Pressable style={[styles.fab, { backgroundColor: theme.primary }]}>
+      <View style={{ position: 'absolute', bottom: 100, right: 16 }}>
+         <Pressable
+           style={[
+             {
+               flexDirection: 'row',
+               alignItems: 'center',
+               paddingLeft: 24,
+               paddingRight: 24,
+               paddingTop: 16,
+               paddingBottom: 16,
+               borderRadius: 9999,
+               gap: 12,
+               shadowColor: '#000',
+               shadowOffset: { width: 0, height: 4 },
+               shadowOpacity: 0.2,
+               shadowRadius: 8,
+               elevation: 6,
+             },
+             { backgroundColor: theme.primary },
+           ]}
+         >
             <SymbolView name="basket" size={24} tintColor={theme.onPrimary} />
             <ThemedText type="labelCaps" style={{ color: theme.onPrimary }}>View Order (2)</ThemedText>
          </Pressable>

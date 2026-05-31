@@ -12,65 +12,62 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/hooks/use-theme';
 
-import _styles from './styles.module.scss';
-const styles = _styles as any;
-
 export default function BillTracker() {
   const theme = useTheme();
   const router = useRouter();
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={styles.header}>
-        <SafeAreaView edges={['top']} style={styles.headerContent}>
-          <View style={styles.brandRow}>
-            <SymbolView name="restaurant" size={24} tintColor={theme.primary} />
+    <ThemedView style={{ flex: 1 }}>
+      <ThemedView style={{ paddingLeft: 16, paddingRight: 16 }}>
+        <SafeAreaView edges={['top']} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: 64 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+            <SymbolView name="fork.knife" size={24} tintColor={theme.primary} />
             <ThemedText type="headlineMd" style={{ color: theme.primary }}>Canteen Pro</ThemedText>
           </View>
-          <View style={[styles.miniAvatar, { borderColor: theme.primaryContainer }]}>
+          <View style={[{ width: 40, height: 40, borderRadius: 20, overflow: 'hidden', borderWidth: 2 }, { borderColor: theme.primaryContainer }]}>
             <ExpoImage
               source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCclxHP8l_IGlhV9LNQjJEdf-XEopUL-VwEX63Ynbw3VdHNf5qhOU7xHw3YOw2VRtAmac7vA7CobqAc0GNky_ZnsTUJDibLu_JxlZaCjlqT_IXgxYIt6Pvmg8Wtw6wg05Ed7NNHvZtTYcxGvtJAp1fbp-53uRt3ElS_N8N8Unej4JSnUImoYZZaheAT0fU28q1Rdk-IIGm92jEtAdHWkreVpOTc6XCaFuBEzLDGpqiviMVcPa975AxLDhQzQMYvy0l6ylsmJO5XCgc' }}
-              style={styles.avatarImage}
+              style={{ width: '100%', height: '100%' }}
             />
           </View>
         </SafeAreaView>
       </ThemedView>
 
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={{ paddingTop: 16, paddingLeft: 16, paddingRight: 16 }} showsVerticalScrollIndicator={false}>
         {/* Total Amount Due Card */}
-        <View style={[styles.dueCard, { backgroundColor: theme.primary }]}>
-          <View style={styles.dueCardContent}>
+        <View style={[{ padding: 24, borderRadius: 24, position: 'relative', overflow: 'hidden', marginBottom: 32 }, { backgroundColor: theme.primary }]}>
+          <View style={{ zIndex: 1 }}>
             <ThemedText type="labelCaps" style={{ color: theme.onPrimary, opacity: 0.9 }}>TOTAL AMOUNT DUE</ThemedText>
-            <View style={styles.amountRow}>
+            <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8, marginTop: 8 }}>
               <ThemedText type="headlineLg" style={{ color: theme.onPrimary }}>NPR 8,450</ThemedText>
               <ThemedText type="bodySm" style={{ color: theme.onPrimary, opacity: 0.8 }}>October 2023</ThemedText>
             </View>
-            <View style={[styles.dueBadge, { backgroundColor: 'rgba(255,255,255,0.1)' }]}>
+            <View style={[{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingLeft: 12, paddingRight: 12, paddingTop: 6, paddingBottom: 6, borderRadius: 9999, marginTop: 16, alignSelf: 'flex-start' }, { backgroundColor: theme.onPrimary + '1A' }]}>
               <SymbolView name="clock" size={16} tintColor={theme.onPrimary} />
               <ThemedText type="bodySm" style={{ color: theme.onPrimary }}>Due in 5 days</ThemedText>
             </View>
           </View>
           {/* Decorative Circle */}
-          <View style={[styles.decorCircle, { backgroundColor: theme.primaryContainer, opacity: 0.2 }]} />
+          <View style={[{ position: 'absolute', top: -40, right: -40, width: 120, height: 120, borderRadius: 60 }, { backgroundColor: theme.primaryContainer, opacity: 0.2 }]} />
         </View>
 
         {/* Payment Summary */}
-        <View style={styles.section}>
-          <Card variant="outline" style={styles.summaryCard}>
+        <View style={{ marginBottom: 32 }}>
+          <Card variant="outline" style={{ padding: 20, borderRadius: 24 }}>
             <ThemedText type="headlineMd" style={{ marginBottom: 16 }}>Payment Summary</ThemedText>
-            <View style={styles.summaryRow}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 }}>
               <ThemedText type="bodyLg" style={{ color: theme.onSurfaceVariant }}>Meals Consumed</ThemedText>
               <ThemedText type="bodyLg" style={{ fontWeight: '700' }}>22</ThemedText>
             </View>
-            <View style={styles.summaryRow}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 }}>
               <ThemedText type="bodyLg" style={{ color: theme.onSurfaceVariant }}>Standard Cost</ThemedText>
               <ThemedText type="bodyLg">NPR 7,700</ThemedText>
             </View>
-            <View style={styles.summaryRow}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 12 }}>
               <ThemedText type="bodyLg" style={{ color: theme.onSurfaceVariant }}>Extra Portions</ThemedText>
               <ThemedText type="bodyLg">NPR 750</ThemedText>
             </View>
-            <View style={[styles.totalRow, { borderTopColor: theme.outlineVariant + '33' }]}>
+            <View style={[{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 12, paddingTop: 12, borderTopWidth: 1 }, { borderTopColor: theme.outlineVariant + '33' }]}>
               <ThemedText type="headlineMd" style={{ color: theme.primary }}>Grand Total</ThemedText>
               <ThemedText type="headlineMd" style={{ color: theme.primary }}>NPR 8,450</ThemedText>
             </View>
@@ -78,8 +75,8 @@ export default function BillTracker() {
         </View>
 
         {/* Daily Transactions */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
+        <View style={{ marginBottom: 32 }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
             <ThemedText type="headlineMd">Daily Transactions</ThemedText>
             <Pressable>
                 <ThemedText type="labelCaps" style={{ color: theme.primary }}>VIEW ALL</ThemedText>
@@ -125,7 +122,7 @@ export default function BillTracker() {
       </ScrollView>
 
       {/* Pay Now FAB */}
-      <View style={styles.footerAction}>
+      <View style={{ position: 'absolute', bottom: 100, left: 16, right: 16 }}>
          <Button
             title="Pay Now"
             icon={<SymbolView name="creditcard.fill" size={20} tintColor={theme.onPrimary} />}

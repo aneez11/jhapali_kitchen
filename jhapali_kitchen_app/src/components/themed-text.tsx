@@ -9,7 +9,8 @@ export type ThemedTextProps = TextProps & {
     | 'headlineLg' 
     | 'headlineMd' 
     | 'bodyLg' 
-    | 'bodySm' 
+    | 'bodySm'
+    | 'bodyXs' 
     | 'labelCaps'
     | 'title' 
     | 'subtitle' 
@@ -25,15 +26,15 @@ export function ThemedText({ style, type = 'default', themeColor, ...rest }: The
     <Text
       style={[
         { color: theme[themeColor ?? 'text'], fontFamily: Fonts.sans },
-        type === 'default' && styles.bodyLg,
         type === 'bodyLg' && styles.bodyLg,
         type === 'bodySm' && styles.bodySm,
+        type === 'bodyXs' && styles.bodyXs,
         type === 'headlineLg' && styles.headlineLg,
         type === 'headlineMd' && styles.headlineMd,
         type === 'labelCaps' && styles.labelCaps,
         type === 'title' && styles.headlineLg,
         type === 'subtitle' && styles.headlineMd,
-        type === 'link' && styles.link,
+        type === 'link' && [styles.link, { color: theme.primary }],
         type === 'code' && styles.code,
         style,
       ]}
@@ -64,6 +65,11 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     lineHeight: 20,
   },
+  bodyXs: {
+    fontSize: 12,
+    fontWeight: '600',
+    lineHeight: 16,
+  },
   labelCaps: {
     fontSize: 12,
     fontWeight: '600',
@@ -73,7 +79,6 @@ const styles = StyleSheet.create({
   },
   link: {
     fontSize: 14,
-    color: '#006c49',
     textDecorationLine: 'underline',
   },
   code: {

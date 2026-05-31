@@ -9,35 +9,32 @@ import { ThemedView } from '@/components/themed-view';
 import { NotificationCard } from '@/components/notifications/notification-card';
 import { useTheme } from '@/hooks/use-theme';
 
-import _styles from './styles.module.scss';
-const styles = _styles as any;
-
 export default function Notifications() {
   const theme = useTheme();
   const router = useRouter();
 
   return (
-    <ThemedView style={styles.container}>
-      <ThemedView style={styles.header}>
-        <SafeAreaView edges={['top']} style={styles.headerContent}>
-          <View style={styles.headerLeft}>
+    <ThemedView style={{ flex: 1 }}>
+      <ThemedView style={{ paddingLeft: 16, paddingRight: 16, borderBottomWidth: 1, borderBottomColor: theme.outlineVariant + '33' }}>
+        <SafeAreaView edges={['top']} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height: 64 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             <Pressable 
-                style={styles.iconButton}
+                style={{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' }}
                 onPress={() => router.back()}
             >
               <SymbolView name="chevron.left" size={24} tintColor={theme.primary} />
             </Pressable>
             <ThemedText type="headlineMd" style={{ color: theme.primary }}>Notifications</ThemedText>
           </View>
-          <Pressable style={[styles.markReadBtn, { backgroundColor: theme.primary + '1A' }]}>
+          <Pressable style={[{ paddingLeft: 12, paddingRight: 12, paddingTop: 6, paddingBottom: 6, borderRadius: 9999 }, { backgroundColor: theme.primary + '1A' }]}>
             <ThemedText type="labelCaps" style={{ color: theme.primary }}>Mark all as read</ThemedText>
           </Pressable>
         </SafeAreaView>
       </ThemedView>
 
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        <View style={styles.section}>
-          <ThemedText type="labelCaps" style={styles.sectionHeader}>TODAY</ThemedText>
+      <ScrollView contentContainerStyle={{ paddingTop: 16, paddingLeft: 16, paddingRight: 16 }} showsVerticalScrollIndicator={false}>
+        <View style={{ marginBottom: 32 }}>
+          <ThemedText type="labelCaps" style={{ color: theme.onSurfaceVariant, marginBottom: 12, letterSpacing: 1 }}>TODAY</ThemedText>
           <NotificationCard
             title="Daily Menu Live"
             message="Today's special: Mediterranean Quinoa Bowl and Grilled Salmon. Pre-order now to skip the queue!"
@@ -62,8 +59,8 @@ export default function Notifications() {
           />
         </View>
 
-        <View style={styles.section}>
-          <ThemedText type="labelCaps" style={styles.sectionHeader}>YESTERDAY</ThemedText>
+        <View style={{ marginBottom: 32 }}>
+          <ThemedText type="labelCaps" style={{ color: theme.onSurfaceVariant, marginBottom: 12, letterSpacing: 1 }}>YESTERDAY</ThemedText>
           <NotificationCard
             title="App Update Available"
             message="Version 2.4.0 is now live with improved nutritional tracking features."
@@ -83,8 +80,8 @@ export default function Notifications() {
         </View>
 
         {/* Empty State / Footer */}
-        <View style={[styles.emptyState, { borderColor: theme.outlineVariant + '4D' }]}>
-            <View style={[styles.emptyIcon, { backgroundColor: theme.surfaceContainerLow }]}>
+        <View style={[{ marginTop: 32, padding: 32, borderRadius: 24, borderWidth: 2, borderStyle: 'dashed', alignItems: 'center', justifyContent: 'center' }, { borderColor: theme.outlineVariant + '4D' }]}>
+            <View style={[{ width: 64, height: 64, borderRadius: 32, alignItems: 'center', justifyContent: 'center', marginBottom: 16 }, { backgroundColor: theme.surfaceContainerLow }]}>
                 <SymbolView name="tray.fill" size={32} tintColor={theme.outline} />
             </View>
             <ThemedText type="bodySm" style={{ color: theme.onSurfaceVariant }}>You're all caught up for now!</ThemedText>

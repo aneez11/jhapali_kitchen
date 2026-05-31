@@ -38,7 +38,7 @@ export function PreferenceCard({
     >
       <View style={styles.content}>
         <View style={[styles.iconContainer, { backgroundColor: iconBg }]}>
-          <SymbolView name={icon} size={20} tintColor={iconColor} />
+          <SymbolView name={icon as any} size={20} tintColor={iconColor} />
         </View>
         <View style={styles.textContainer}>
           <ThemedText type="bodyLg" style={{ fontWeight: '600' }}>{title}</ThemedText>

@@ -59,7 +59,7 @@ export function NotificationCard({
     >
       {!isRead && <View style={[styles.indicator, { backgroundColor: getAccentColor() }]} />}
       <View style={[styles.iconContainer, { backgroundColor: getIconBg() }]}>
-        <SymbolView name={icon} size={24} tintColor={getAccentColor()} />
+        <SymbolView name={icon as any} size={24} tintColor={getAccentColor()} />
       </View>
       <View style={styles.content}>
         <View style={styles.header}>

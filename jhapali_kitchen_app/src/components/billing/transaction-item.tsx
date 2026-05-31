@@ -38,7 +38,7 @@ export function TransactionItem({
     >
       <View style={styles.left}>
         <View style={[styles.iconContainer, { backgroundColor: isExtra ? theme.secondaryContainer + '1A' : theme.surfaceContainerHigh }]}>
-          <SymbolView name={icon} size={24} tintColor={isExtra ? theme.secondary : theme.primary} />
+          <SymbolView name={icon as any} size={24} tintColor={isExtra ? theme.secondary : theme.primary} />
         </View>
         <View>
           <ThemedText type="bodyLg" style={{ fontWeight: '700' }}>{title}</ThemedText>
